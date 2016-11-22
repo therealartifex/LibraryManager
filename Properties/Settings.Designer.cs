@@ -33,5 +33,16 @@ namespace LibraryManager.Properties {
                 return ((string)(this["LMCon"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\libman4.mdf;I" +
+            "ntegrated Security=True")]
+        public string libman4CS {
+            get {
+                return ((string)(this["libman4CS"]));
+            }
+        }
     }
 }
