@@ -30,12 +30,14 @@
         {
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.gbxSearch = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.rdbTitle = new System.Windows.Forms.RadioButton();
-            this.rdbAuthor = new System.Windows.Forms.RadioButton();
             this.rdbID = new System.Windows.Forms.RadioButton();
+            this.rdbAuthor = new System.Windows.Forms.RadioButton();
+            this.rdbTitle = new System.Windows.Forms.RadioButton();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.chTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chAuthor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtStatus = new System.Windows.Forms.TextBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.gbxSearch.SuspendLayout();
             this.SuspendLayout();
@@ -60,43 +62,16 @@
             this.gbxSearch.TabStop = false;
             this.gbxSearch.Text = "Search By";
             // 
-            // listView1
+            // rdbID
             // 
-            this.listView1.Location = new System.Drawing.Point(12, 157);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(450, 324);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(468, 157);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(290, 256);
-            this.textBox2.TabIndex = 3;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(468, 419);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(290, 62);
-            this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // rdbTitle
-            // 
-            this.rdbTitle.AutoSize = true;
-            this.rdbTitle.Location = new System.Drawing.Point(6, 40);
-            this.rdbTitle.Name = "rdbTitle";
-            this.rdbTitle.Size = new System.Drawing.Size(62, 23);
-            this.rdbTitle.TabIndex = 0;
-            this.rdbTitle.TabStop = true;
-            this.rdbTitle.Text = "Title";
-            this.rdbTitle.UseVisualStyleBackColor = true;
+            this.rdbID.AutoSize = true;
+            this.rdbID.Location = new System.Drawing.Point(625, 40);
+            this.rdbID.Name = "rdbID";
+            this.rdbID.Size = new System.Drawing.Size(114, 23);
+            this.rdbID.TabIndex = 2;
+            this.rdbID.TabStop = true;
+            this.rdbID.Text = "ID Number";
+            this.rdbID.UseVisualStyleBackColor = true;
             // 
             // rdbAuthor
             // 
@@ -109,16 +84,61 @@
             this.rdbAuthor.Text = "Author";
             this.rdbAuthor.UseVisualStyleBackColor = true;
             // 
-            // rdbID
+            // rdbTitle
             // 
-            this.rdbID.AutoSize = true;
-            this.rdbID.Location = new System.Drawing.Point(625, 40);
-            this.rdbID.Name = "rdbID";
-            this.rdbID.Size = new System.Drawing.Size(114, 23);
-            this.rdbID.TabIndex = 2;
-            this.rdbID.TabStop = true;
-            this.rdbID.Text = "ID Number";
-            this.rdbID.UseVisualStyleBackColor = true;
+            this.rdbTitle.AutoSize = true;
+            this.rdbTitle.Location = new System.Drawing.Point(6, 40);
+            this.rdbTitle.Name = "rdbTitle";
+            this.rdbTitle.Size = new System.Drawing.Size(62, 23);
+            this.rdbTitle.TabIndex = 0;
+            this.rdbTitle.TabStop = true;
+            this.rdbTitle.Text = "Title";
+            this.rdbTitle.UseVisualStyleBackColor = true;
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chTitle,
+            this.chAuthor});
+            this.listView1.Location = new System.Drawing.Point(12, 157);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(450, 324);
+            this.listView1.TabIndex = 2;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView1_ItemSelectionChanged);
+            // 
+            // chTitle
+            // 
+            this.chTitle.Text = "Title";
+            this.chTitle.Width = 94;
+            // 
+            // chAuthor
+            // 
+            this.chAuthor.Text = "Author";
+            this.chAuthor.Width = 133;
+            // 
+            // txtStatus
+            // 
+            this.txtStatus.AcceptsReturn = true;
+            this.txtStatus.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStatus.Location = new System.Drawing.Point(468, 157);
+            this.txtStatus.Multiline = true;
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.ReadOnly = true;
+            this.txtStatus.Size = new System.Drawing.Size(290, 256);
+            this.txtStatus.TabIndex = 3;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(468, 419);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(290, 62);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSearch
             // 
@@ -132,12 +152,13 @@
             // 
             // frmSearch
             // 
+            this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 493);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.gbxSearch);
             this.Controls.Add(this.txtSearch);
@@ -147,7 +168,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSearch";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Search";
             this.gbxSearch.ResumeLayout(false);
             this.gbxSearch.PerformLayout();
@@ -161,11 +182,13 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.GroupBox gbxSearch;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.RadioButton rdbID;
         private System.Windows.Forms.RadioButton rdbAuthor;
         private System.Windows.Forms.RadioButton rdbTitle;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ColumnHeader chTitle;
+        private System.Windows.Forms.ColumnHeader chAuthor;
     }
 }

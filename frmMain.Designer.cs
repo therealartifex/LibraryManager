@@ -87,6 +87,7 @@
             this.Controls.Add(this.btnCheckInOut);
             this.Controls.Add(this.button1);
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Library Manager";
             this.ResumeLayout(false);
 

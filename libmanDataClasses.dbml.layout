@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13, 8.5" name="libmanDataClasses">
+  <DataContextMoniker Name="/libmanDataClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="843b358b-751b-4b0b-88df-ad551471a53f" absoluteBounds="6.5, 1.875, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/libmanDataClassesDataContext/Book" />
+      <nestedChildShapes>
+        <elementListCompartment Id="929bf951-b8e8-4bd2-8769-bd433d4d572f" absoluteBounds="6.515, 2.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="20487b40-c372-46c5-a72e-0a5333bb62be" absoluteBounds="10.75, 3.375, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/libmanDataClassesDataContext/Patron" />
+      <nestedChildShapes>
+        <elementListCompartment Id="52e61b90-8678-4de2-896f-adedd14a8d64" absoluteBounds="10.765, 3.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="485955c4-0d28-48fb-95d3-a132dda36975" absoluteBounds="8.25, 6.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/libmanDataClassesDataContext/Role" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8002a855-40f0-4e70-ab78-34db1973697d" absoluteBounds="8.265, 7.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(9.40625 : 6.625); (9.40625 : 4.86825038411458); (10.75 : 4.86825038411458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/libmanDataClassesDataContext/Role/Role_Patron" />
+      <nodes>
+        <classShapeMoniker Id="485955c4-0d28-48fb-95d3-a132dda36975" />
+        <classShapeMoniker Id="20487b40-c372-46c5-a72e-0a5333bb62be" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="250c0d6e-b1d1-4b22-b03c-83f427f89a0b" absoluteBounds="3.5, 4, 2, 1.9631982421875">
+      <DataClassMoniker Name="/libmanDataClassesDataContext/Fee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5cee0732-4a19-4195-b46a-f5595de81639" absoluteBounds="3.5149999999999997, 4.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10.75 : 4.51427574544271); (5.5 : 4.51427574544271)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/libmanDataClassesDataContext/Patron/Patron_Fee" />
+      <nodes>
+        <classShapeMoniker Id="20487b40-c372-46c5-a72e-0a5333bb62be" />
+        <classShapeMoniker Id="250c0d6e-b1d1-4b22-b03c-83f427f89a0b" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="88541a42-b6cc-4e80-809c-70f01b34bc7b" absoluteBounds="2, 1.25, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/libmanDataClassesDataContext/Lending" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2ca3b7b2-3d3f-4023-9ba7-33aa43adbcfa" absoluteBounds="2.0149999999999997, 1.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.5 : 2.44794840494792); (4 : 2.44794840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/libmanDataClassesDataContext/Book/Book_Lending" />
+      <nodes>
+        <classShapeMoniker Id="843b358b-751b-4b0b-88df-ad551471a53f" />
+        <classShapeMoniker Id="88541a42-b6cc-4e80-809c-70f01b34bc7b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.75 : 3.375); (11.75 : 1.53125); (4 : 1.53125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/libmanDataClassesDataContext/Patron/Patron_Lending" />
+      <nodes>
+        <classShapeMoniker Id="20487b40-c372-46c5-a72e-0a5333bb62be" />
+        <classShapeMoniker Id="88541a42-b6cc-4e80-809c-70f01b34bc7b" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
