@@ -14,7 +14,7 @@ namespace LibraryManager
         private void btnCO_Click(object sender, EventArgs e)
         {
             txtStatus.Clear();
-            txtStatus.AppendText($"{DateTime.Now}\n- - - - - - - - -\n");
+            txtStatus.AppendText($"{DateTime.Now}\n- - - - - - - - - -\n");
             if (txtBookId.Text == "" || txtPatronId.Text == "") txtStatus.AppendText("Book ID and Patron ID cannot be empty.\n");
             else
             {
@@ -53,7 +53,7 @@ namespace LibraryManager
         private void btnCI_Click(object sender, EventArgs e)
         {
             txtStatus.Clear();
-            txtStatus.AppendText($"{DateTime.Now}\n");
+            txtStatus.AppendText($"{DateTime.Now}\r\n- - - - - - - - - -");
             if (txtBookId.Text == "") txtStatus.AppendText("Book ID cannot be empty.\n");
             else
             {
@@ -68,17 +68,15 @@ namespace LibraryManager
                         var p = db.Lendings.Where(l => l.BookId == int.Parse(txtBookId.Text) && l.ReturnDate==null).Select(l => l.PatronId).First();
                         var f = new Fee { Amount = 5m, AssessedDate = DateTime.Today, FeeType = "OD", PatronId = p };
                         var mb = MessageBox.Show($"Patron has returned book overdue. Pay now?", "LibMan", MessageBoxButtons.YesNo);
-                        if (mb == DialogResult.Yes)
-                        {
-                            f.PaidDate = DateTime.Today;
-                        }
+                        if (mb == DialogResult.Yes) f.PaidDate = DateTime.Today;
                         db.Fees.InsertOnSubmit(f);
                     }
                     var checkin = db.Lendings.First(l => l.BookId == int.Parse(txtBookId.Text) && l.ReturnDate==null);
                     checkin.ReturnDate = DateTime.Today;
+                    txtStatus.AppendText($"CHECK IN\r\nPATRON: {checkin.Patron.LastName}, {checkin.Patron.FirstName}\r\nBOOK: {checkin.Book.Title}\r\n");
+
                 }
                 db.SubmitChanges();
-                txtStatus.AppendText("Book checked in.\n");
             }
 
         }

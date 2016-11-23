@@ -24,22 +24,26 @@ namespace LibraryManager
             else
             {
                 var db = new libmanDataClassesDataContext();
-                var q = db.Books.Where(_=>_.Title.Contains(txtSearch.Text)).Select(_=>new {_.Title,Author=$"{_.AuthorLastName}, {_.AuthorFirstName}"});
-                foreach (var b in q) listView1.Items.Add(new ListViewItem(new[] {b.Title,b.Author}));
+                if (rdbTitle.Checked)
+                    foreach (var b in db.Books.Where(_ => _.Title.Contains(txtSearch.Text)).Select(_ => new {_.Title, Author = $"{_.AuthorLastName}, {_.AuthorFirstName}"})) listView1.Items.Add(new ListViewItem(new[] {b.Title, b.Author}));
+                else if (rdbAuthorLast.Checked)
+                    foreach (var b in db.Books.Where(_ => _.AuthorLastName.Contains(txtSearch.Text)).Select(_ => new {_.Title, Author = $"{_.AuthorLastName}, {_.AuthorFirstName}"})) listView1.Items.Add(new ListViewItem(new[] {b.Title, b.Author}));
+                else if (rdbAuthorFirst.Checked)
+                    foreach (var b in db.Books.Where(_ => _.AuthorFirstName.Contains(txtSearch.Text)).Select(_ => new {_.Title, Author = $"{_.AuthorLastName}, {_.AuthorFirstName}"})) listView1.Items.Add(new ListViewItem(new[] {b.Title, b.Author}));
+                else if (rdbID.Checked)
+                    foreach (var b in db.Books.Where(_ => _.Id == int.Parse(txtSearch.Text)).Select(_ => new {_.Title, Author = $"{_.AuthorLastName}, {_.AuthorFirstName}"})) listView1.Items.Add(new ListViewItem(new[] {b.Title, b.Author}));
             }
         }
 
         private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            if (e.IsSelected)
-            {
-                txtStatus.Clear();
-                var db = new libmanDataClassesDataContext();
-                var b = db.Books.First(_ => _.Title == e.Item.Text);
-                txtStatus.AppendText("LENDING STATUS: ");
-                Lending l = db.Lendings.FirstOrDefault(_ => _.Book==b && _.ReturnDate == null);
-                txtStatus.AppendText(l == null ? "AVAILABLE\r\n" : $"CHECKED OUT\r\nTO: {l.Patron.LastName}, {l.Patron.FirstName}\r\nDUE: {l.BorrowDate+TimeSpan.FromDays(7):d}");
-            }
+            if (!e.IsSelected) return;
+            txtStatus.Clear();
+            var db = new libmanDataClassesDataContext();
+            var b = db.Books.First(_ => _.Title == e.Item.Text);
+            txtStatus.AppendText($"BOOK ID: {b.Id}\r\nLENDING STATUS: ");
+            var l = db.Lendings.FirstOrDefault(_ => _.Book==b && _.ReturnDate == null);
+            txtStatus.AppendText(l == null ? "AVAILABLE\r\n" : $"CHECKED OUT\r\nTO: {l.Patron.LastName}, {l.Patron.FirstName}\r\nDUE: {l.BorrowDate+TimeSpan.FromDays(7):d}");
         }
     }
 }

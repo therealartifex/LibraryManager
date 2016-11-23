@@ -31,7 +31,7 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.gbxSearch = new System.Windows.Forms.GroupBox();
             this.rdbID = new System.Windows.Forms.RadioButton();
-            this.rdbAuthor = new System.Windows.Forms.RadioButton();
+            this.rdbAuthorLast = new System.Windows.Forms.RadioButton();
             this.rdbTitle = new System.Windows.Forms.RadioButton();
             this.listView1 = new System.Windows.Forms.ListView();
             this.chTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -39,6 +39,7 @@
             this.txtStatus = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.rdbAuthorFirst = new System.Windows.Forms.RadioButton();
             this.gbxSearch.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,8 +53,9 @@
             // 
             // gbxSearch
             // 
+            this.gbxSearch.Controls.Add(this.rdbAuthorFirst);
             this.gbxSearch.Controls.Add(this.rdbID);
-            this.gbxSearch.Controls.Add(this.rdbAuthor);
+            this.gbxSearch.Controls.Add(this.rdbAuthorLast);
             this.gbxSearch.Controls.Add(this.rdbTitle);
             this.gbxSearch.Location = new System.Drawing.Point(13, 49);
             this.gbxSearch.Name = "gbxSearch";
@@ -65,7 +67,7 @@
             // rdbID
             // 
             this.rdbID.AutoSize = true;
-            this.rdbID.Location = new System.Drawing.Point(625, 40);
+            this.rdbID.Location = new System.Drawing.Point(624, 40);
             this.rdbID.Name = "rdbID";
             this.rdbID.Size = new System.Drawing.Size(114, 23);
             this.rdbID.TabIndex = 2;
@@ -73,16 +75,16 @@
             this.rdbID.Text = "ID Number";
             this.rdbID.UseVisualStyleBackColor = true;
             // 
-            // rdbAuthor
+            // rdbAuthorLast
             // 
-            this.rdbAuthor.AutoSize = true;
-            this.rdbAuthor.Location = new System.Drawing.Point(305, 40);
-            this.rdbAuthor.Name = "rdbAuthor";
-            this.rdbAuthor.Size = new System.Drawing.Size(83, 23);
-            this.rdbAuthor.TabIndex = 1;
-            this.rdbAuthor.TabStop = true;
-            this.rdbAuthor.Text = "Author";
-            this.rdbAuthor.UseVisualStyleBackColor = true;
+            this.rdbAuthorLast.AutoSize = true;
+            this.rdbAuthorLast.Location = new System.Drawing.Point(138, 40);
+            this.rdbAuthorLast.Name = "rdbAuthorLast";
+            this.rdbAuthorLast.Size = new System.Drawing.Size(172, 23);
+            this.rdbAuthorLast.TabIndex = 1;
+            this.rdbAuthorLast.TabStop = true;
+            this.rdbAuthorLast.Text = "Author Last Name";
+            this.rdbAuthorLast.UseVisualStyleBackColor = true;
             // 
             // rdbTitle
             // 
@@ -150,6 +152,17 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // rdbAuthorFirst
+            // 
+            this.rdbAuthorFirst.AutoSize = true;
+            this.rdbAuthorFirst.Location = new System.Drawing.Point(380, 40);
+            this.rdbAuthorFirst.Name = "rdbAuthorFirst";
+            this.rdbAuthorFirst.Size = new System.Drawing.Size(174, 23);
+            this.rdbAuthorFirst.TabIndex = 3;
+            this.rdbAuthorFirst.TabStop = true;
+            this.rdbAuthorFirst.Text = "Author First Name";
+            this.rdbAuthorFirst.UseVisualStyleBackColor = true;
+            // 
             // frmSearch
             // 
             this.AcceptButton = this.btnSearch;
@@ -185,10 +198,11 @@
         private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.RadioButton rdbID;
-        private System.Windows.Forms.RadioButton rdbAuthor;
+        private System.Windows.Forms.RadioButton rdbAuthorLast;
         private System.Windows.Forms.RadioButton rdbTitle;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ColumnHeader chTitle;
         private System.Windows.Forms.ColumnHeader chAuthor;
+        private System.Windows.Forms.RadioButton rdbAuthorFirst;
     }
 }
