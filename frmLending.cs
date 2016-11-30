@@ -14,8 +14,8 @@ namespace LibraryManager
         private void btnCO_Click(object sender, EventArgs e)
         {
             txtStatus.Clear();
-            txtStatus.AppendText($"{DateTime.Now}\n- - - - - - - - - -\n");
-            if (txtBookId.Text == "" || txtPatronId.Text == "") txtStatus.AppendText("Book ID and Patron ID cannot be empty.\n");
+            txtStatus.AppendText($"{DateTime.Now}\r\n- - - - - - - - - -\r\n");
+            if (txtBookId.Text == "" || txtPatronId.Text == "") txtStatus.AppendText("Book ID and Patron ID cannot be empty.\r\n");
             else
             {
                 var db = new libmanDataClassesDataContext();
@@ -24,8 +24,8 @@ namespace LibraryManager
                 var limit = db.Patrons.Where(p => p.Id == int.Parse(txtPatronId.Text)).Select(p => p.Role1.Limit).First();
                 var chargesPending = db.Fees.Where(f => f.PatronId == int.Parse(txtPatronId.Text) && f.PaidDate==null);
                 var totalFees = chargesPending.Select(f => f.Amount).Sum();
-                if (bookOut) txtStatus.AppendText("Book has been checked out already.\n");
-                else if (booksChecked==limit) txtStatus.AppendText("Checkout limit reached.\n");
+                if (bookOut) txtStatus.AppendText("Book has been checked out already.\r\n");
+                else if (booksChecked==limit) txtStatus.AppendText("Checkout limit reached.\r\n");
                 else if (totalFees > 0)
                 {
                     var mb = MessageBox.Show($"Patron has ${totalFees} in charges which must be paid before further checkouts are made. Pay now?","LibMan", MessageBoxButtons.YesNo);
@@ -44,7 +44,7 @@ namespace LibraryManager
                         BorrowDate = DateTime.Today
                     };
                     db.Lendings.InsertOnSubmit(checkout);
-                    txtStatus.AppendText("Patron successfully checked out book.\n");
+                    txtStatus.AppendText("Patron successfully checked out book.\r\n");
                     db.SubmitChanges();
                 }
             }
@@ -53,7 +53,7 @@ namespace LibraryManager
         private void btnCI_Click(object sender, EventArgs e)
         {
             txtStatus.Clear();
-            txtStatus.AppendText($"{DateTime.Now}\r\n- - - - - - - - - -");
+            txtStatus.AppendText($"{DateTime.Now}\r\n- - - - - - - - - -\r\n");
             if (txtBookId.Text == "") txtStatus.AppendText("Book ID cannot be empty.\n");
             else
             {
